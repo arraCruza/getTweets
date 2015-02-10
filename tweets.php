@@ -28,11 +28,11 @@ if ($_GET['twitter_path']) { $twitter_path = $_GET['twitter_path']; }  else {
 
 $http_code = $connection->request('GET', $connection->url($twitter_path), $parameters );
 
-if ($http_code === 200) { // if everything's good
+if ($http_code === 200) {
 	$response = strip_tags($connection->response['response']);
     
 
-	if ($_GET['callback']) { // if we ask for a jsonp callback function
+	if ($_GET['callback']) { 
 		echo $_GET['callback'],'(', $response,');';
 	} else {
 		echo $response;	
@@ -41,5 +41,3 @@ if ($http_code === 200) { // if everything's good
 	echo "Error ID: ",$http_code, "<br>\n";
 	echo "Error: ",$connection->response['error'], "<br>\n";
 }
-
-// You may have to download and copy http://curl.haxx.se/ca/cacert.pem
